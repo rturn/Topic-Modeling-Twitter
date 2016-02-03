@@ -1,0 +1,70 @@
+---
+output: html_document
+---
+  
+###Analyzing Reactions to Major Events Using Topic Modeling of Twitter  
+__Robert Turner__  
+__Mentor: Bret Hanlon__  
+__University of Wisconsin-Madison__  
+__Department of Statistics__  
+__Feb. 2016__  
+  
+---
+###Abstract
+
+```{r}
+##knitr::opts_chunk$set(fig.width=4, fig.height=4, fig.align = 'center', message = FALSE)
+##knitr::opts_chunk$set(echo = FALSE)
+load("datafiles/topicsvtime.Rdata")
+```
+
+---
+###Introduction    
+    
+Topic models are multivariate models which represent a set of estimated probability distributions for words across a set number of topics. To create a document from this model, a probability distribution for each document across the topics is created, then words are chosen from each topic to create the final document (1). A document can be any body of text such as an author's body of work or text mined from popular websites. These topics represent blocks of co-occuring words, and ideally represent a summary of the major topics of interest or themes of a body of work. This allows for the examination of a large corpus of text. In this paper text data mined from Twitter was analyzed using this topic model framework to determine the major points of interest discussed on Twitter. As more than 500 million tweets are sent daily, summarizing Twitter could provide an insight into what the average citizen is interested in.  
+  
+Due to the huge volume of tweets sent daily, it can be very difficult to access and handle a significant portion of the Tweets sent within a given time period. The most common and least expensive method of downloading Tweets is using Twitter's Streaming API, which promises a maximum of 1% of all Tweets for a given time period. Twitter also allows access to a "Firehose" feed which allows access to all Tweets sent but at a high price. While this small sample may seem unable to accurately represent all of Twitter, previous research has shown that not only does the Streaming API show good performance when detecting popular hashtags and keywords, it also allows access to far more Tweets than advertised, providing an average of 43.5% of Tweets when compared to the Firehose feed (2). While the Streaming API performs slightly less well than random samples of the same size created from the Firehose feed, these differences were small when the sample sizes were large. 
+    
+With access to a significant portion of Tweets and the ability to discover the major topics of interest in a body of text, we endeavored to use topic modeling to analyze Tweets over time and see how the model changes in reaction to major events. In this paper we model the Tweets following the April 2015 earthquake in Nepal, and the 2015 Super Bowl. The earthquake was chosen as it represents a well known disaster, and was followed by people worldwide. We expected that topic models fit to Tweets sent after this event would have fewer topics as the Nepal Eartquake eclipses other discussion. The Super Bowl is another popular topic on Twitter, but is popular due to its entertainment value rather than its severity. Models fit to Tweets sent after the Super Bowl were expected to have more varied topics, as the game has many unique facets to be discussed. The players, the game itself, the commercials, and discussion about the fans could potentially all generate their own topic. The time surrounding these events were broken up into small intervals and a topic model was fit to each interval to determine how Twitter reacted to these major events.
+  
+###Dataset  
+   
+To access the Twitter Streaming API in R the streamR package created by Pablo Barbera was used (3). This package allowed us to download and use Tweets directly from the API within R. As shown before these Tweets provide close to random sample of Tweets sent within a time period and should perform well when performing model fitting. Tweets concerning the Nepal Earthquake were taken from 4-24-2015 at 18:11 GMT to 4-28-2015 at 6:11 GMT. Tweets concerning the Superbowl were taken from 2-1-2015 at 5:30 GMT to 2-7-2015 at 5:30 GMT. Tweets were downloaded in blocks, restarting the download every 5 minutes to provide robustness against potential server issues. Only Tweets originating from the US and sent in English were considered. Following the download the Tweets were cleaned of emoticons, leftover unicode, links, hashtags, and other garbage data which would affect later model fitting. This cleaning code is provided in the parseTweetFiles package on the referenced Github (appendix).   
+    
+###Methods
+  
+2) Bayesian Topic Model    
+  
+3) Bayes Factor    
+  
+4) Interval breakdown and choosing number of topics  
+  
+  
+   
+###Results    
+  
+###Discussion   
+    
+While notable keywords pertaining the events in question were found in the topic models, well-defined topics were hard to determine. As the number of topics fit and the contents of these topics seemed fairly consistent, perhaps removing the most popular terms in the dataset would allow a closer examination of reactions to these specific events as opposed to the average sentiment of Twitter. The lack of well-defined topics may also be due to the smaller time periods used when fitting topic models. While the smaller interval size was necessary due to integer overflow issues, the overflow was tied to the number of documents fit, not the word count. Compressing a number of Tweets for a given time period into a larger document then fitting on a larger time interval across these documents may fix the overflow problem and provide a better fit. This is reminiscent of the method of aggregating Tweets by users recommended by Hong & Davidson (2010), which showed that by creating larger documents by combining Tweets from the same users topic model performance can be improved (6).   
+  
+In addition to altering the dataset, different topic models could be fit to this data. Wallach 2009 (7) provides a number of suggestions for determining the number of topics in a topic model, which would allow for this paper to be repeated using alternative topic models, potentially creating more intuitive topics. Comparing or combining the results of multiple different topic models or topic models fit on different document collections of Tweets could also produce better results. In any case this study has shown that a topic model can be used to explore major points of interest on Twitter and that these topics are effected by major events and the time of day.  
+  
+###References    
+  
+1)	Taddy, M. (2012). On Estimation and Selection for Topic Models. Journal of Machine Learning Research.   
+2)	Morstatter, F., Pfeffer, J., Liu, H., & Carley, K. (2013). Is the Sample Good Enough? Comparing Data from Twitter's Streaming API with Twitter's Firehose. ArXiv.org.     
+3)	Pablo Barbera (2015). streamR: Access to Twitter Streaming API via R. R package version 0.3.2.  
+4)	Blei, D., Ng, A., & Jordan, M. (2003). Latent Dirichlet Allocation. Journal of Machine Learning Research.   
+5)	Carson Sievert and Kenny Shirley (2014). LDAvis: A method for visualizing and interpreting topics. Proceedings of the Workshop on Interactive Language Learning, Visualization, and Interfaces.         
+6)	Hong, L., & Davison, B. D. (2010). Empirical study of topic modeling in Twitter. Proceedings of the First Workshop on Social Media Analytics - SOMA '10.   
+7)	Wallach, H. M., Murray, I., Salakhutdinov, R., & Mimno, D. (2009). Evaluation methods for topic models. Proceedings of the 26th Annual International Conference on Machine Learning - ICML '09     
+
+Github link: https://github.com/rturn/Topic-Modeling-Twitter  
+  
+###Appendix  
+  
+```{r}
+plot(superbowl_times, superbowl_topics, type = "l")
+plot(nepal_times, nepal_topics, type = "l")
+```
+
