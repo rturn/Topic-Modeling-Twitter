@@ -41,11 +41,11 @@ To analyze the change of Tweets over time we first broke the full dataset of Twe
   
 The algorithm chose K topic models with K ranging from 7-25 for each interval of Tweets. K was typically higher when fitting models to more active time intervals on Twitter, and lower during off hours. The Bayes Factors for models on each time period showed the expected pattern; an increase as K increases until a peak, then a decline as K increases further. Models fit to Tweets sent immediately after each event show key words for each event. Topics referencing the Nepal disaster were seen for the entire period of time analyzed in this paper, while topics referencing the Superbowl were less common after February 3rd. 
 
-```{r}
+```{r, fig.width = 8}
+par(mfrow = c(1,2))
 plot(superbowl_times, superbowl_topics, type = "l")
 plot(nepal_times, nepal_topics, type = "l")
 ``` 
-NOTE: THESE TIMES APPEAR TO BE INCORRECT, ITS UNCLEAR WHY SOME TIMES HAVE MULTIPLE TOPIC COUNTS, THIS WILL BE MANUALLY CHANGED SOON.    
  
 ###Discussion   
    
