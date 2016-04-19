@@ -2,7 +2,7 @@
 title: "Sample Model Output"
 author: "Robert Turner"
 date: "April 18, 2016"
-output: html_document
+output: pdf_document
 ---
 ##Superbowl    
 ###12 Hours Before  
