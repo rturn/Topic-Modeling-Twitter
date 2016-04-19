@@ -1,0 +1,40 @@
+---
+title: "Sample Model Output"
+author: "Robert Turner"
+date: "April 18, 2016"
+output: html_document
+---
+##Superbowl    
+###12 Hours Before  
+####Word Frequency of 30 Most Common Terms  
+![Overall](results/superbowl/1130 2-1 Superbowl Overall.png)  
+  
+###Immediately After      
+####Word Frequency of 30 Most Common Terms    
+![Overall](results/superbowl/2330 2-1 Superbowl Overall.png)  
+  
+####Word Frequency of 30 Most Heavily Weighted Terms in a Topic  
+![Topic 3](results/superbowl/2330 2-1 Superbowl Topic 3.png)  
+![Topic 3](results/superbowl/2330 2-1 Superbowl Topic 4.png)  
+![Topic 3](results/superbowl/2330 2-1 Superbowl Topic 5.png)  
+![Topic 3](results/superbowl/2330 2-1 Superbowl Topic 6.png)  
+
+###2 Days After     
+####Word Frequency of 30 Most Common Terms   
+![Overall](results/superbowl/2330 2-3 Superbowl Overall.png)
+    
+      
+##Nepal    
+###1.5 Hours After 
+####Word Frequency of 30 Most Common Terms  
+![Overall](results/nepal/7-41 4-25 Nepal Overall.png)    
+  
+####Word Frequency of 30 Most Heavily Weighted Terms in a Topic   
+![Topic 1](results/nepal/7-41 4-25 Nepal Topic.png)  
+  
+###2 Days After  
+####Word Frequency of 30 Most Common Terms  
+![Overall](results/nepal/7-41 4-27 Nepal Overall.png)    
+  
+####Word Frequency of 30 Most Heavily Weighted Terms in a Topic   
+![Topic 1](results/nepal/7-41 4-27 Nepal Topic.png)

@@ -10,16 +10,14 @@ __University of Wisconsin-Madison__
 __Department of Statistics__  
 __Apr. 2016__  
 
-###Abstract  
-Each day millions of Tweets are sent from users worldwide concerning a variety of events and topics. Parsing through so much data can be difficult, but if successful would provide insight into public opinion and reactions. 
----
-```{r}
+###Abstract    
+Each day millions of Tweets are sent from users worldwide concerning a variety of events and topics. Parsing through so much data can be difficult, but if successful would provide insight into public opinion and reactions. One possible avenue for this investigation is through the use of topic models. A topic model assumes that a Tweet would be created by a weighted selection from a variety of topics, followed by selecting major terms from these topics. In this way we can find clusters of co-occuring terms and determine the focus on people on Twitter. To examine this approach topic models were fit to the periods of time immediately before and after the April 2015 Earthquake in Nepal and the January 2015 Superbowl. We hoped to see topics concerning these events appear in the model and to see the models change over time. We discovered that topics concerning these events appeared shortly after both events. In the case of the Superbowl there were numerous topics, but these topics did not persist for long following the end of the game. Topics for the Superbowl were also seen shortly before the event started. For the Nepal Earthquake there was only one topic referencing the event, but this topic persisted throughout the entire time period. These results suggest that the topic modeling approach can be useful for detecting major events through Twitter and may also shed some light on public opinion.  
+
+```{r, echo=FALSE}
 knitr::opts_chunk$set(fig.width=4, fig.height=4, fig.align = 'center', message = FALSE)
 knitr::opts_chunk$set(echo = FALSE)
 load("results/topicsvtime.Rdata")
 ```
-
----
 ###Introduction    
     
 Topic models are multivariate models which represent a set of estimated probability distributions for words across a set number of topics. To create a document from this model, a probability distribution for each document across the topics is created, then words are chosen from each topic to create the final document (1,4,10,11). A document can be any body of text such as an author's body of work or text mined from popular websites. These topics represent blocks of co-occuring words, and ideally represent a summary of the major topics of interest or themes of a body of work. This allows for the examination of a large corpus of text. In this paper text downloaded from Twitter was analyzed using this topic model framework to determine the major points of interest discussed on Twitter. As more than 500 million tweets are sent daily, summarizing Twitter could provide an insight into what the average citizen is interested in.  
